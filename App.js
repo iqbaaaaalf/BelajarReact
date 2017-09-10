@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Alert, Button, StyleSheet, Text, form, TextInput, View, AppRegistry, Image, ScrollView } from 'react-native';
+import {Alert, FlatList, Button, StyleSheet, Text, form, TextInput, View, AppRegistry, Image, ScrollView } from 'react-native';
 
 class SpamImage extends Component{
   render(){
@@ -62,7 +62,6 @@ export default class App extends React.Component {
     return (
       <ScrollView contentContainerStyle={styles.background}>
 
-
         <Blink text={'Hello ' + name + '-sama'}/>
 
         <TextInput type="text" placeholder={"type "+ requiredMessage} onChangeText={(text) => this.setState({text})}/>
@@ -74,6 +73,19 @@ export default class App extends React.Component {
         
         <SpamImage imageName={pic}/>
         <SpamImage imageName={pic1}/>
+
+        <Text> Chara list of Shigatsu Kimi no uso Anime </Text>
+
+        <FlatList
+          data={[
+            {key: 'Arima'},
+            {key: 'Kaori'},
+            {key: 'dipsi'},
+            {key: 'lala'},
+          ]}
+          renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+        />
+
         {/* <View style={styles.backgroundText}>
           <Blink text='Hello Iqbal!'/>
         </View>
@@ -107,5 +119,9 @@ const styles = StyleSheet.create({
   },
   backgroundText: {
     backgroundColor: '#ff5',
-  }
+  },
+  item: {
+  fontSize: 18,
+  height: 44,
+  },
 });
